@@ -174,16 +174,11 @@ export function BirthdayCalendar({ config, sound }) {
               </span>
             ))}
           </div>
-          <div className="calendar-footer">hari favorit semesta, dan aku ♡</div>
+          <div className="calendar-footer">
+            <span className="calendar-doodle">ini harinya! ♡</span>
+            <span className="special-stamp">SPECIAL DAY ✧</span>
+          </div>
         </div>
-        <span className="special-stamp">
-          SPECIAL
-          <br />
-          DAY ✧
-        </span>
-        <span className="calendar-doodle">
-          ini harinya!<span>↖</span>
-        </span>
       </div>
       <Button
         className="secondary"

@@ -148,3 +148,32 @@ test.describe("hero cake animation regression", () => {
     await assertVisibleCake();
   });
 });
+
+test("calendar decorations never overlap the year or date grid", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.locator("#birthday").scrollIntoViewIfNeeded();
+  await page.evaluate(() => document.fonts.ready);
+  const bounds = await page.locator(".calendar-paper").evaluate((el) => {
+    const rect = (selector) => {
+      const r = el.querySelector(selector).getBoundingClientRect();
+      return { left: r.left, right: r.right, top: r.top, bottom: r.bottom };
+    };
+    return {
+      year: rect(".calendar-heading span:last-child"),
+      grid: rect(".calendar-grid"),
+      stamp: rect(".special-stamp"),
+      note: rect(".calendar-doodle"),
+    };
+  });
+  const overlaps = (a, b) =>
+    a.left < b.right &&
+    a.right > b.left &&
+    a.top < b.bottom &&
+    a.bottom > b.top;
+  expect(overlaps(bounds.stamp, bounds.year)).toBe(false);
+  expect(overlaps(bounds.stamp, bounds.grid)).toBe(false);
+  expect(overlaps(bounds.note, bounds.grid)).toBe(false);
+  expect(overlaps(bounds.note, bounds.stamp)).toBe(false);
+});
