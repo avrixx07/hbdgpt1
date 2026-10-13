@@ -10,10 +10,10 @@ export const birthdayConfig = {
   enableMusic: true,
   enableScrollAnimations: true,
   photos: [
-    "/images/memory-1.svg",
-    "/images/memory-2.svg",
-    "/images/memory-3.svg",
-    "/images/memory-4.svg",
+    "/images/1.jpg",
+    "/images/2.jpg",
+    "/images/3.jpg",
+    "/images/4.jpg",
   ],
   captions: [
     "Hari yang nggak mau aku lupain.",

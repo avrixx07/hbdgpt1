@@ -78,7 +78,7 @@ test("all sections fit, images load and no horizontal overflow", async ({
 test("missing photos fallback, music toggles and modal focus is trapped", async ({
   page,
 }) => {
-  await page.route("**/images/memory-1.svg", (route) => route.abort());
+  await page.route("**/images/1.jpg", (route) => route.abort());
   await page.goto("/");
   await page.getByRole("button", { name: "Putar musik" }).click();
   await expect(

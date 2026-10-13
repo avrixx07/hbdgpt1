@@ -33,7 +33,7 @@ Edit **`src/data/birthdayConfig.js`**:
 - `backgroundMusic`: path audio, misalnya `/audio/lagu-kita.mp3`. Tempatkan file milik Anda di `public/audio/`.
 - `enableMusic`, `enableConfetti`, `enableScrollAnimations`: sakelar fitur.
 
-Foto default adalah **ilustrasi SVG pengganti**, bukan foto pribadi. Jika foto tidak ditemukan, ilustrasi fallback muncul. Musik utama menggunakan file `public/music.mp3` yang Anda tambahkan. Melodi music-box sebelumnya tetap tersedia di `public/audio/romantic.wav` sebagai pilihan alternatif. Musik dimulai lewat tombol pembuka atau tombol musik, volume naik perlahan ke 30%, dan tombol mute juga menonaktifkan efek suara. Kegagalan audio tidak menghalangi cerita. Semua font disertakan lokal melalui Fontsource; aplikasi tidak memerlukan koneksi ke Google Fonts, backend, akun, atau API key.
+Galeri menggunakan foto JPG Anda di **`public/images/1.jpg` hingga `4.jpg`**, sesuai urutan nama file. Foto pertama juga digunakan pada hadiah terakhir. Jika foto tidak ditemukan, ilustrasi fallback muncul. Musik utama menggunakan file `public/music.mp3` yang Anda tambahkan. Melodi music-box sebelumnya tetap tersedia di `public/audio/romantic.wav` sebagai pilihan alternatif. Musik dimulai lewat tombol pembuka atau tombol musik, volume naik perlahan ke 30%, dan tombol mute juga menonaktifkan efek suara. Kegagalan audio tidak menghalangi cerita. Semua font disertakan lokal melalui Fontsource; aplikasi tidak memerlukan koneksi ke Google Fonts, backend, akun, atau API key.
 
 ## Interaksi
 
@@ -53,6 +53,7 @@ Navigasi titik di sisi layar memungkinkan akses langsung ke setiap bab. Modal me
 public/
   music.mp3
   audio/romantic.wav
+  images/1.jpg ... 4.jpg
   images/memory-1.svg ... memory-4.svg, fallback.svg
 src/
   main.jsx
