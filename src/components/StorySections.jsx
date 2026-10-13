@@ -1,3 +1,4 @@
+import { TypedLetter } from "./TypedLetter";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import {
@@ -485,18 +486,7 @@ export function LoveLetter({ config, sound }) {
       <Next to="final" />
       {visible && (
         <Modal label="Surat cinta untukmu" onClose={close}>
-          <article className="readable-letter">
-            <span className="eyebrow">SEBUAH SURAT KECIL ♡</span>
-            <h3>Untuk {config.recipientName},</h3>
-            {config.letter.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
-            <p className="signature">
-              Dengan seluruh cintaku,
-              <br />
-              {config.senderName} ♡
-            </p>
-          </article>
+          <TypedLetter config={config} />
         </Modal>
       )}
     </Section>

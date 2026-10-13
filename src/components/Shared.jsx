@@ -54,7 +54,7 @@ export function Modal({ children, onClose, label }) {
       if (e.key === "Escape") onClose();
       if (e.key === "Tab") {
         const all = ref.current.querySelectorAll(
-          'button,a[href],input,[tabindex="0"]',
+          'button:not(:disabled),a[href],input:not(:disabled),[tabindex="0"]',
         );
         if (!all.length) {
           e.preventDefault();

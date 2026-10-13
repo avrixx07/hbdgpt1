@@ -9,12 +9,8 @@ export const birthdayConfig = {
   enableConfetti: true,
   enableMusic: true,
   enableScrollAnimations: true,
-  photos: [
-    "/images/1.jpg",
-    "/images/2.jpg",
-    "/images/3.jpg",
-    "/images/4.jpg",
-  ],
+  letterTypingSpeed: 24, // Milidetik per karakter; lebih kecil berarti lebih cepat.
+  photos: ["/images/1.jpg", "/images/2.jpg", "/images/3.jpg", "/images/4.jpg"],
   captions: [
     "Hari yang nggak mau aku lupain.",
     "Manusia favoritku, selalu.",

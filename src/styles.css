@@ -1929,3 +1929,45 @@ h1 span + span {
   width: 100%;
   height: 100%;
 }
+
+.letter-typing-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  margin-bottom: 18px;
+  font-size: 10px;
+  color: #996e7d;
+}
+.letter-typing-controls .text-button {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.letter-typing-controls button:disabled {
+  cursor: default;
+  text-decoration: none;
+}
+.typed-pending,
+.signature-pending {
+  visibility: hidden;
+}
+.typing-caret {
+  display: inline-block;
+  width: 0;
+  height: 1em;
+  border-left: 2px solid #b26483;
+  margin-right: -2px;
+  vertical-align: -0.12em;
+  animation: typing-blink 0.8s steps(1) infinite;
+}
+@keyframes typing-blink {
+  50% {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .typing-caret {
+    display: none;
+  }
+}

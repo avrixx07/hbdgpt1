@@ -177,3 +177,61 @@ test("calendar decorations never overlap the year or date grid", async ({
   expect(overlaps(bounds.note, bounds.grid)).toBe(false);
   expect(overlaps(bounds.note, bounds.stamp)).toBe(false);
 });
+
+test.describe("typing love letter", () => {
+  test.use({ reducedMotion: "no-preference" });
+  test("types progressively, can skip, restarts, and finishes naturally", async ({
+    page,
+  }) => {
+    await page.clock.install();
+    await page.goto("/");
+    await page.getByRole("button", { name: "Buka Suratnya" }).click();
+    await page.clock.runFor(1000);
+    const body = page.locator(".typed-letter-body");
+    await expect(body).toBeVisible();
+    const length = () =>
+      page
+        .locator(".typed-visible")
+        .evaluateAll((nodes) =>
+          nodes.reduce((n, el) => n + el.textContent.length, 0),
+        );
+    await page.clock.runFor(600);
+    const first = await length();
+    expect(first).toBeGreaterThan(0);
+    await page.clock.runFor(400);
+    expect(await length()).toBeGreaterThan(first);
+    await expect(body).toHaveAttribute("data-complete", "false");
+    await page.getByRole("button", { name: "Tampilkan semua" }).click();
+    await expect(body).toHaveAttribute("data-complete", "true");
+    await expect(page.locator(".readable-letter .signature")).toBeVisible();
+    await page.getByRole("button", { name: "Tutup", exact: true }).click();
+    await page.getByRole("button", { name: "Buka Suratnya" }).click();
+    await page.clock.runFor(1000);
+    await expect(body).toHaveAttribute("data-complete", "false");
+    await page.clock.fastForward(60000);
+    await expect(body).toHaveAttribute("data-complete", "true");
+    await expect(page.locator(".typing-caret")).toHaveCount(0);
+    await page.getByRole("button", { name: "Tutup", exact: true }).focus();
+    await page.keyboard.press("Shift+Tab");
+    await expect(
+      page.getByRole("button", { name: "Tutup", exact: true }),
+    ).toBeFocused();
+    await page.keyboard.press("Escape");
+    await expect(page.getByRole("dialog")).toHaveCount(0);
+  });
+});
+
+test("reduced motion shows the complete letter immediately", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "Buka Suratnya" }).click();
+  await expect(page.locator(".typed-letter-body")).toHaveAttribute(
+    "data-complete",
+    "true",
+  );
+  await expect(
+    page.getByRole("button", { name: "Tampilkan semua" }),
+  ).toHaveCount(0);
+  await expect(page.locator(".readable-letter .signature")).toBeVisible();
+});

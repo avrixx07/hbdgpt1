@@ -31,6 +31,7 @@ Edit **`src/data/birthdayConfig.js`**:
 - `photos`: path foto di folder `public/images/`, misalnya `/images/kita-di-pantai.jpg`. Empat foto direkomendasikan untuk komposisi satu layar. Gambar portrait atau persegi memberikan hasil terbaik; gambar galeri dipotong dengan `object-fit: cover`, viewer menampilkan foto utuh.
 - `captions`: caption sesuai urutan foto.
 - `backgroundMusic`: path audio, misalnya `/audio/lagu-kita.mp3`. Tempatkan file milik Anda di `public/audio/`.
+- `letterTypingSpeed`: kecepatan animasi surat dalam milidetik per karakter (default 24). Animasi dimulai ulang saat surat dibuka, bisa dilewati dengan “Tampilkan semua”, dan otomatis dinonaktifkan untuk preferensi reduced motion.
 - `enableMusic`, `enableConfetti`, `enableScrollAnimations`: sakelar fitur.
 
 Galeri menggunakan foto JPG Anda di **`public/images/1.jpg` hingga `4.jpg`**, sesuai urutan nama file. Foto pertama juga digunakan pada hadiah terakhir. Jika foto tidak ditemukan, ilustrasi fallback muncul. Musik utama menggunakan file `public/music.mp3` yang Anda tambahkan. Melodi music-box sebelumnya tetap tersedia di `public/audio/romantic.wav` sebagai pilihan alternatif. Musik dimulai lewat tombol pembuka atau tombol musik, volume naik perlahan ke 30%, dan tombol mute juga menonaktifkan efek suara. Kegagalan audio tidak menghalangi cerita. Semua font disertakan lokal melalui Fontsource; aplikasi tidak memerlukan koneksi ke Google Fonts, backend, akun, atau API key.
