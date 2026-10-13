@@ -105,3 +105,46 @@ test("missing photos fallback, music toggles and modal focus is trapped", async 
     page.getByRole("button", { name: "Buka kenangan 1", exact: true }),
   ).toBeFocused();
 });
+
+test.describe("hero cake animation regression", () => {
+  test.use({ reducedMotion: "no-preference" });
+  test("cake stays visible after scrolling back, resizing, and reloading", async ({
+    page,
+  }) => {
+    await page.goto(process.env.STORY_TEST_URL || "/");
+    const cake = page.locator(".hero-art .cake");
+    const assertVisibleCake = async () => {
+      await expect(cake).toBeVisible();
+      await expect
+        .poll(() =>
+          cake.evaluate((el) => {
+            let opacity = 1;
+            for (let node = el; node; node = node.parentElement) {
+              opacity *= Number(getComputedStyle(node).opacity);
+            }
+            return opacity;
+          }),
+        )
+        .toBeGreaterThan(0.95);
+    };
+    await assertVisibleCake();
+    await page.addStyleTag({
+      content:
+        "html { scroll-snap-type: none !important; scroll-behavior: auto !important; }",
+    });
+    await page.evaluate(() => window.scrollTo(0, innerHeight));
+    await expect.poll(() => page.evaluate(() => scrollY)).toBeGreaterThan(300);
+    // Allow the scrubbed timeline to finish before returning to its initial state.
+    await page.waitForTimeout(1200);
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await assertVisibleCake();
+    const viewport = page.viewportSize();
+    await page.setViewportSize({
+      width: viewport.width,
+      height: viewport.height - 80,
+    });
+    await assertVisibleCake();
+    await page.reload();
+    await assertVisibleCake();
+  });
+});

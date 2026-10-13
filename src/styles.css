@@ -1938,3 +1938,9 @@ h1 span + span {
     animation: none;
   }
 }
+
+.hero-art-entrance {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}

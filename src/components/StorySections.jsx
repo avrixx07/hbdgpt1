@@ -49,28 +49,31 @@ export function HeroSection({ config, onStart }) {
         <p className="hero-subtitle">
           {config.heroSubtitle} <span>♡</span>
         </p>
-        <motion.div
-          className="hero-art"
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ type: "spring", duration: 1.5, delay: 0.2 }}
-        >
-          <span className="art-ring" />
-          <Bow className="hero-bow" />
-          <Cake lit />
-          <span className="cake-note">
-            dibuat dengan cinta
-            <br />
-            <span>↖</span> khusus buat kamu
-          </span>
-          <span className="birthday-stamp">
-            HAPPY
-            <br />
-            <b>BIRTHDAY</b>
-            <br />
-            TO YOU ♡
-          </span>
-        </motion.div>
+        <div className="hero-art">
+          {/* GSAP owns the outer scroll layer; Motion owns only this entrance. */}
+          <motion.div
+            className="hero-art-entrance"
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            transition={{ type: "spring", duration: 1.5, delay: 0.2 }}
+          >
+            <span className="art-ring" />
+            <Bow className="hero-bow" />
+            <Cake lit />
+            <span className="cake-note">
+              dibuat dengan cinta
+              <br />
+              <span>↖</span> khusus buat kamu
+            </span>
+            <span className="birthday-stamp">
+              HAPPY
+              <br />
+              <b>BIRTHDAY</b>
+              <br />
+              TO YOU ♡
+            </span>
+          </motion.div>
+        </div>
         <Button onClick={onStart}>
           Buka Kejutan Kecilmu <Heart size={15} />
         </Button>
