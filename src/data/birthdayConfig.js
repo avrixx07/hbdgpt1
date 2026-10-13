@@ -5,7 +5,7 @@ export const birthdayConfig = {
   heroTitle: "Happy Birthday,\nMy Love!",
   heroSubtitle:
     "Katanya hari ini ada seseorang yang makin tua… tapi kok makin lucu dan makin aku sayang, ya?",
-  backgroundMusic: "/audio/romantic.wav",
+  backgroundMusic: "/music.mp3",
   enableConfetti: true,
   enableMusic: true,
   enableScrollAnimations: true,

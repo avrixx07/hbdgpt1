@@ -33,7 +33,7 @@ Edit **`src/data/birthdayConfig.js`**:
 - `backgroundMusic`: path audio, misalnya `/audio/lagu-kita.mp3`. Tempatkan file milik Anda di `public/audio/`.
 - `enableMusic`, `enableConfetti`, `enableScrollAnimations`: sakelar fitur.
 
-Foto default adalah **ilustrasi SVG pengganti**, bukan foto pribadi. Jika foto tidak ditemukan, ilustrasi fallback muncul. Musik default merupakan melodi music-box instrumental asli sepanjang 24 detik yang dapat diulang; tidak memakai rekaman pihak ketiga. Musik dimulai lewat tombol pembuka atau tombol musik, volume naik perlahan ke 30%, dan tombol mute juga menonaktifkan efek suara. Kegagalan audio tidak menghalangi cerita. Semua font disertakan lokal melalui Fontsource; aplikasi tidak memerlukan koneksi ke Google Fonts, backend, akun, atau API key.
+Foto default adalah **ilustrasi SVG pengganti**, bukan foto pribadi. Jika foto tidak ditemukan, ilustrasi fallback muncul. Musik utama menggunakan file `public/music.mp3` yang Anda tambahkan. Melodi music-box sebelumnya tetap tersedia di `public/audio/romantic.wav` sebagai pilihan alternatif. Musik dimulai lewat tombol pembuka atau tombol musik, volume naik perlahan ke 30%, dan tombol mute juga menonaktifkan efek suara. Kegagalan audio tidak menghalangi cerita. Semua font disertakan lokal melalui Fontsource; aplikasi tidak memerlukan koneksi ke Google Fonts, backend, akun, atau API key.
 
 ## Interaksi
 
@@ -51,6 +51,7 @@ Navigasi titik di sisi layar memungkinkan akses langsung ke setiap bab. Modal me
 
 ```text
 public/
+  music.mp3
   audio/romantic.wav
   images/memory-1.svg ... memory-4.svg, fallback.svg
 src/
