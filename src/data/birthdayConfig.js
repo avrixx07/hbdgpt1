@@ -1,7 +1,7 @@
 export const birthdayConfig = {
   recipientName: "Sayang",
   senderName: "Aku",
-  birthdayDate: "2003-09-03",
+  birthdayDate: "2003-09-07",
   heroTitle: "Happy Birthday,\nMy Love!",
   heroSubtitle:
     "Katanya hari ini ada seseorang yang makin tua… tapi kok makin lucu dan makin aku sayang, ya?",
