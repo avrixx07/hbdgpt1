@@ -13,7 +13,6 @@ import {
   FinalSurprise,
 } from "./components/StorySections";
 import { FloatingDecorations, Confetti } from "./components/Shared";
-import { Bow } from "./components/Illustrations";
 import { MusicController } from "./components/MusicController";
 gsap.registerPlugin(ScrollTrigger);
 const ids = [
@@ -65,24 +64,22 @@ export default function BirthdayApp() {
           },
         });
       });
-      gsap.utils
-        .toArray(".polaroid")
-        .forEach((el, i) =>
-          gsap.fromTo(
-            el,
-            { y: 35 + i * 8 },
-            {
-              y: -12 - i * 5,
-              ease: "none",
-              scrollTrigger: {
-                trigger: "#memories",
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1,
-              },
+      gsap.utils.toArray(".polaroid").forEach((el, i) =>
+        gsap.fromTo(
+          el,
+          { y: 35 + i * 8 },
+          {
+            y: -12 - i * 5,
+            ease: "none",
+            scrollTrigger: {
+              trigger: "#memories",
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1,
             },
-          ),
-        );
+          },
+        ),
+      );
       gsap.to(".hero-art", {
         y: -45,
         opacity: 0.5,
@@ -108,7 +105,14 @@ export default function BirthdayApp() {
         </a>
         <header className="site-header">
           <a className="wordmark" href="#opening">
-            <Bow className="wordmark-bow" /> our little
+            <img
+              className="wordmark-bow"
+              src="/images/bow.svg"
+              width="32"
+              height="28"
+              alt=""
+            />{" "}
+            our little
             <br />
             <i>birthday story.</i>
           </a>
