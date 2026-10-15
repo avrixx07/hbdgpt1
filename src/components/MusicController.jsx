@@ -77,6 +77,11 @@ export const MusicController = forwardRef(function MusicController(
   return (
     <>
       <audio
+        hidden
+        aria-hidden="true"
+        tabIndex={-1}
+        controls={false}
+        style={{ display: "none" }}
         ref={audio}
         src={config.backgroundMusic}
         loop
